@@ -38,7 +38,7 @@
 #   the default of this parameter in archlinux_workstation::swapfile.
 #
 # * __gui__ - Install a graphical/desktop environment. Currently
-#   accepted values are "kde" or undef. Pull requests welcome for others.
+#   accepted values are "kde", "i3" or undef. Pull requests welcome for others.
 #   X will be installed either way.
 #
 # * __userapps__ - (boolean) if true, install the user apps specified
@@ -61,7 +61,7 @@ class archlinux_workstation (
   # validate parameters here
   validate_absolute_path($user_home)
   if $gui != undef {
-    validate_re($gui, '^(kde)$')
+    validate_re($gui, '^(kde|i3)$')
   }
   validate_bool($userapps)
 
