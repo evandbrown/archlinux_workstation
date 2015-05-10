@@ -9,4 +9,8 @@ class archlinux_workstation::i3 {
   package {'i3':
     ensure => present,
   }
+  
+  package {'dmenu':
+    ensure => present,
+  }
 }
