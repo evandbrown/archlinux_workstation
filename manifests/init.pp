@@ -127,7 +127,6 @@ class archlinux_workstation (
   }
 
   class {'archlinux_workstation::yaourt': }
-  class {'archlinux_workstation::cups': }
 
   if $gui == 'kde' {
     class {'archlinux_workstation::kde': }
