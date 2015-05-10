@@ -13,4 +13,8 @@ class archlinux_workstation::i3 {
   package {'dmenu':
     ensure => present,
   }
+  
+  package {'xterm':
+    ensure => present,
+  }
 }
