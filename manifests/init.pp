@@ -126,8 +126,6 @@ class archlinux_workstation (
     }
   }
 
-  class {'archlinux_workstation::yaourt': }
-
   if $gui == 'kde' {
     class {'archlinux_workstation::kde': }
     class {'archlinux_workstation::kdm': }
