@@ -23,7 +23,7 @@ class archlinux_workstation::i3 (
     ensure => present,
   }
   
-  package {'xterm':
+  package {'terminator':
     ensure => present,
   }
   
