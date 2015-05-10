@@ -130,6 +130,9 @@ class archlinux_workstation (
     class {'archlinux_workstation::kde': }
     class {'archlinux_workstation::kdm': }
   }
+  elsif $gui == 'i3' {
+    class {'archlinux_workstation::i3': }
+  }
 
   class {'archlinux_workstation::networkmanager':
     gui => $gui,
