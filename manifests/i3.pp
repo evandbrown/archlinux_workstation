@@ -6,7 +6,7 @@
 #   - install "i3" package group
 #
 class archlinux_workstation::i3 {
-  package {'ie':
+  package {'i3':
     ensure => present,
   }
 }
