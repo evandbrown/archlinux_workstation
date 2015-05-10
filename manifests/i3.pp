@@ -5,7 +5,16 @@
 # === Actions:
 #   - install "i3" package group
 #
-class archlinux_workstation::i3 {
+# === Parameters
+#
+# * __username__ - (string) User to install xinitrc for
+#
+# * __userhome__ - Path to $username's home directory. Default: "/home/${username}.
+#
+class archlinux_workstation::i3 (
+  $username = undef,
+  $userhome = undef,
+) {
   package {'i3':
     ensure => present,
   }
@@ -16,5 +25,14 @@ class archlinux_workstation::i3 {
   
   package {'xterm':
     ensure => present,
+  }
+  
+  # Create an .xinitrc
+  file {'${userhome}/.xinitrc':
+    ensure => present,
+    owner  => '{$username}',
+    group  => '{$username}',
+    mode   => '0755',
+    source => 'puppet:///modules/archlinux_workstation/xinitrc',
   }
 }
