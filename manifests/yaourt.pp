@@ -20,23 +20,6 @@ class archlinux_workstation::yaourt {
     notify  => Exec['pacman-resync'],
   }
 
-  ini_setting { 'pacman.conf-archlinuxfr-siglevel':
-    ensure  => present,
-    path    => '/etc/pacman.conf',
-    section => 'archlinuxfr',
-    setting => 'SigLevel',
-    value   => 'Never',
-  }
-
-  ini_setting { 'pacman.conf-archlinuxfr-server':
-    ensure  => present,
-    path    => '/etc/pacman.conf',
-    section => 'archlinuxfr',
-    setting => 'Server',
-    value   => 'http://repo.archlinux.fr/$arch',
-    notify  => Exec['pacman-resync'],
-  }
-
   exec {'pacman-resync':
     refreshonly => true,
     user        => 'root',
@@ -45,7 +28,7 @@ class archlinux_workstation::yaourt {
 
   package {'yaourt':
     ensure  => present,
-    require => [Ini_setting['pacman.conf-archlinuxfr-server'], Ini_setting['pacman.conf-archlinuxfr-siglevel'], Exec['pacman-resync']],
+    require => [Exec['pacman-resync']],
   }
 
 }
