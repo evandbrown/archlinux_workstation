@@ -5,7 +5,6 @@
 # === Actions:
 #   - install "i3" package group
 #
-<<<<<<< HEAD
 class archlinux_workstation::i3 (
   $username,
   $userhome,
