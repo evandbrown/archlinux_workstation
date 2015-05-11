@@ -15,7 +15,7 @@ class archlinux_workstation::kdm {
   }
 
   service {'kdm':
-    enable => true,
+    enable => false,
   }
 
 }

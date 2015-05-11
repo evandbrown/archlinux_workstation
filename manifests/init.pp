@@ -31,14 +31,8 @@
 #   If set to undef, this module will not act on anything within
 #   the user's home directory.
 #
-# * __swapfile_path__ - Path to create a swapfile at. Set to
-#   undef to not create and use a swap file. Default: /swapfile.
-#
-# * __swapfile_size__ - If $swapfile_path is not undef, override
-#   the default of this parameter in archlinux_workstation::swapfile.
-#
 # * __gui__ - Install a graphical/desktop environment. Currently
-#   accepted values are "kde" or undef. Pull requests welcome for others.
+#   accepted values are "kde", "i3" or undef. Pull requests welcome for others.
 #   X will be installed either way.
 #
 # * __userapps__ - (boolean) if true, install the user apps specified
@@ -47,8 +41,6 @@
 class archlinux_workstation (
   $username        = undef,
   $user_home       = "/home/${username}",
-  $swapfile_path   = '/swapfile',
-  $swapfile_size   = undef,
   $gui             = 'kde',
   $userapps        = true,
 ) inherits archlinux_workstation::params {
@@ -119,19 +111,22 @@ class archlinux_workstation (
   class {'archlinux_workstation::base_packages': }
   class {'archlinux_workstation::dkms': }
 
-  if $swapfile_path != undef {
-    class {'archlinux_workstation::swapfile':
-      swapfile_path => $swapfile_path,
-      swapfile_size => $swapfile_size,
-    }
-  }
-
-  class {'archlinux_workstation::yaourt': }
-  class {'archlinux_workstation::cups': }
-
   if $gui == 'kde' {
     class {'archlinux_workstation::kde': }
     class {'archlinux_workstation::kdm': }
+  }
+  elsif $gui == 'i3' {
+    class {'archlinux_workstation::i3':
+      username => $username,
+      userhome => $user_home,
+    }
+  }
+
+  if $::virtual == 'virtualbox' {
+    class {'archlinux_workstation::vboxguest':
+      username => $username,
+      userhome => $user_home,
+    }
   }
 
   class {'archlinux_workstation::networkmanager':
@@ -149,5 +144,4 @@ class archlinux_workstation (
       userhome => $userhome,
     }
   }
-
 }
