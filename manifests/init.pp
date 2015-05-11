@@ -61,7 +61,7 @@ class archlinux_workstation (
   # validate parameters here
   validate_absolute_path($user_home)
   if $gui != undef {
-    validate_re($gui, '^(kde)$')
+    validate_re($gui, '^(kde|i3)$')
   }
   validate_bool($userapps)
 
