@@ -19,5 +19,5 @@ class archlinux_workstation::base_packages {
   package {'net-tools': ensure => present, }
   package {'lsof': ensure => present, }
   package {'lsscsi': ensure => present, }
-  package {'screen': ensure => present, }
+  package {'tmux': ensure => present, }
 }

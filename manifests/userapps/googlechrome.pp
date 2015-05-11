@@ -1,6 +1,6 @@
 # == Class: archlinux_workstation::userapps::googlechrome
 #
-# Install proprietary google-chrome package and ttf-google-fonts-git from archlinuxfr repository.
+# Install chromium
 #
 # === Actions:
 #   - Install google-chrome

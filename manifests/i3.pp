@@ -5,6 +5,7 @@
 # === Actions:
 #   - install "i3" package group
 #
+<<<<<<< HEAD
 class archlinux_workstation::i3 (
   $username,
   $userhome,
@@ -30,6 +31,4 @@ class archlinux_workstation::i3 (
     mode   => '0755',
     source => 'puppet:///modules/archlinux_workstation/xinitrc',
   }
-
-
 }

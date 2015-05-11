@@ -31,14 +31,8 @@
 #   If set to undef, this module will not act on anything within
 #   the user's home directory.
 #
-# * __swapfile_path__ - Path to create a swapfile at. Set to
-#   undef to not create and use a swap file. Default: /swapfile.
-#
-# * __swapfile_size__ - If $swapfile_path is not undef, override
-#   the default of this parameter in archlinux_workstation::swapfile.
-#
 # * __gui__ - Install a graphical/desktop environment. Currently
-#   accepted values are "kde" or undef. Pull requests welcome for others.
+#   accepted values are "kde", "i3" or undef. Pull requests welcome for others.
 #   X will be installed either way.
 #
 # * __userapps__ - (boolean) if true, install the user apps specified
