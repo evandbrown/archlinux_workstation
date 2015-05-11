@@ -29,5 +29,19 @@ class archlinux_workstation::i3 (
     group  => "${username}",
     mode   => '0755',
     source => 'puppet:///modules/archlinux_workstation/xinitrc',
+  } 
+  
+  
+  if $::virtual == 'virtualbox' {
+    exec {'exec-vbox-additions':
+      user      => "${username}", 
+      command   => "sed -i '2i/usr/bin/VBoxClient-all' ${userhome}/.xinitrc",
+      path	=> "/usr/bin",
+      require	=> File["${userhome}/.xinitrc"],
+    }
   }
+
+  
+
+
 }

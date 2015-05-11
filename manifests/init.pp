@@ -41,8 +41,9 @@
 class archlinux_workstation (
   $username        = undef,
   $user_home       = "/home/${username}",
-  $gui             = 'kde',
+  $gui             = 'i3',
   $userapps        = true,
+  $dotfiles        = undef,
 ) inherits archlinux_workstation::params {
 
   # make sure we're on arch, otherwise fail
@@ -65,6 +66,7 @@ class archlinux_workstation (
     archlinux_workstation::user { $username:
       username => $username,
       homedir  => $userhome,
+      dotfiles => $dotfiles,
     }
   }
 
@@ -123,10 +125,7 @@ class archlinux_workstation (
   }
 
   if $::virtual == 'virtualbox' {
-    class {'archlinux_workstation::vboxguest':
-      username => $username,
-      userhome => $user_home,
-    }
+    class {'archlinux_workstation::vboxguest': }
   }
 
   class {'archlinux_workstation::networkmanager':

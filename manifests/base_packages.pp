@@ -20,4 +20,5 @@ class archlinux_workstation::base_packages {
   package {'lsof': ensure => present, }
   package {'lsscsi': ensure => present, }
   package {'tmux': ensure => present, }
+  package {'git': ensure => present, }
 }
