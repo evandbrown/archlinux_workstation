@@ -25,11 +25,14 @@
 #   If left undefined, this module will not do anything to users
 #   or groups, or anything that is user-specific.
 #
-# * __user_home__ - Path to $username's home directory. Used for
+# * __userhome__ - Path to $username's home directory. Used for
 #   classes that put files in the user's home directory, and to
 #   create SSH keys for the user. Default: "/home/${username}.
 #   If set to undef, this module will not act on anything within
 #   the user's home directory.
+#
+# * __groups__ - Array of strings of group names to add user to.
+#  Not required.
 #
 # * __gui__ - Install a graphical/desktop environment. Currently
 #   accepted values are "kde", "i3" or undef. Pull requests welcome for others.
@@ -40,7 +43,8 @@
 #
 class archlinux_workstation (
   $username        = undef,
-  $user_home       = "/home/${username}",
+  $userhome       = "/home/${username}",
+  $groups	   = undef,
   $gui             = 'i3',
   $userapps        = true,
   $dotfiles        = undef,
@@ -52,7 +56,7 @@ class archlinux_workstation (
   }
 
   # validate parameters here
-  validate_absolute_path($user_home)
+  validate_absolute_path($userhome)
   if $gui != undef {
     validate_re($gui, '^(kde|i3)$')
   }
@@ -62,10 +66,10 @@ class archlinux_workstation (
   if ! $username {
     $userhome = undef
   } else {
-    $userhome = $user_home
     archlinux_workstation::user { $username:
       username => $username,
       homedir  => $userhome,
+      groups   => $groups,
       dotfiles => $dotfiles,
     }
   }
@@ -120,7 +124,7 @@ class archlinux_workstation (
   elsif $gui == 'i3' {
     class {'archlinux_workstation::i3':
       username => $username,
-      userhome => $user_home,
+      userhome => $userhome,
     }
   }
 

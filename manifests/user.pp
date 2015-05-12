@@ -50,7 +50,7 @@ define archlinux_workstation::user (
   if $groups {
     User[$username] {
       groups  => $groups,
-      require => [Group[$username], Group[$groups], ],
+      require => Group[$username],
     }
   } else {
     User[$username] {
@@ -69,7 +69,7 @@ define archlinux_workstation::user (
       cwd	  => $homedir,
       path        => '/usr/bin',
       environment => "HOME=${homedir}",
-      command	  => "git clone ${dotfiles} && mv dotfiles .dotfiles && cd .dotfiles && ./install.sh",
+      command	  => "mkdir .ssh ; rm .bash_profile ; rm .bashrc ; git clone ${dotfiles} && mv dotfiles .dotfiles && cd .dotfiles && ./install.sh",
       creates     => "${homedir}/.dotfiles/install.sh",
       user	  => $username,
       require	  => Package['git'],
