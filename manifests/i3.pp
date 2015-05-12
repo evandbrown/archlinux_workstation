@@ -23,6 +23,10 @@ class archlinux_workstation::i3 (
     ensure => present,
   } 
 
+  package {'feh':
+    ensure => present,
+  }
+
   file {"${userhome}/.xinitrc":
     ensure => present,
     owner  => "${username}", 
