@@ -13,6 +13,10 @@ class archlinux_workstation::alsa {
     notify => Exec['alsa-unmute-master'],
   }
 
+  package {'pulseaudio':
+    ensure => present,
+  }
+
   exec {'alsa-unmute-master':
     refreshonly => true,
     user        => 'root',
