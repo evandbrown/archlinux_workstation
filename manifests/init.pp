@@ -87,33 +87,6 @@ class archlinux_workstation (
     content  => "${username} ALL=(ALL) ALL",
   }
 
-  # saz/ssh
-  class { 'ssh::server':
-    storeconfigs_enabled => false,
-    options              => {
-      'AllowUsers'             => $username,
-      'AuthorizedKeysFile'     => '.ssh/authorized_keys',
-      'GSSAPIAuthentication'   => 'no',
-      'KerberosAuthentication' => 'no',
-      'PasswordAuthentication' => 'no',
-      'PermitRootLogin'        => 'no',
-      'Port'                   => [22],
-      'PubkeyAuthentication'   => 'yes',
-      'RSAAuthentication'      => 'yes',
-      'SyslogFacility'         => 'AUTH',
-      'UsePrivilegeSeparation' => 'sandbox', # "Default for new installations."
-      'X11Forwarding'          => 'no',
-    },
-  }
-
-  # firewall rule for ssh
-  firewall { '005 allow ssh':
-    port   => [22],
-    proto  => tcp,
-    action => accept,
-  }
-
-  class {'archlinux_workstation::makepkg': }
   class {'archlinux_workstation::base_packages': }
   class {'archlinux_workstation::dkms': }
 
