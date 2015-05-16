@@ -21,4 +21,8 @@ class archlinux_workstation::base_packages {
   package {'lsscsi': ensure => present, }
   package {'tmux': ensure => present, }
   package {'git': ensure => present, }
+  package {'xf86-video-intel': ensure => present, }
+  package {'xbindkeys': ensure => present, }
+  package {'dmenu': ensure => present, }
+  package {'tlp': ensure => present, }
 }
