@@ -27,6 +27,8 @@ class archlinux_workstation::userapps (
   class {'archlinux_workstation::userapps::googlechrome': }
   class {'archlinux_workstation::userapps::virtualbox': }
   class {'archlinux_workstation::userapps::irssi': }
+  class {'archlinux_workstation::userapps::clementine': }
+  class {'archlinux_workstation::userapps::firefox': }
 
   archlinux_workstation::userapps::rvm { $username:
     userhome => $userhome,
