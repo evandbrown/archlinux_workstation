@@ -31,7 +31,7 @@ class archlinux_workstation::xorg {
     ensure => present,
   }
 
-  archlinux_workstation::aur { 'xss-lock':
+  archlinux_workstation::aur { 'xss-lock-git':
      ensure => present,
   }
 }
