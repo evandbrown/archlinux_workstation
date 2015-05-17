@@ -17,10 +17,6 @@ class archlinux_workstation::i3 (
 
   package {'dmenu':
     ensure => present,
-  }
-
-  package {'terminator':
-    ensure => present,
   } 
 
   package {'feh':

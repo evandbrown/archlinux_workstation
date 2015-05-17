@@ -21,7 +21,10 @@ class archlinux_workstation::xorg {
                     'xorg-server-utils',
                     'xorg-xinit',
                     'mesa',
-                    'xf86-video-vesa']
+                    'xf86-video-vesa',
+                    'xautolock',
+                    'xbindkeys',
+                    'terminator']
 
   package {$xorg_packages:
     ensure => present,
