@@ -24,10 +24,14 @@ class archlinux_workstation::xorg {
                     'xf86-video-vesa',
                     'xautolock',
                     'xbindkeys',
-                    'terminator']
+                    'terminator',
+                    'slock']
 
   package {$xorg_packages:
     ensure => present,
   }
 
+  archlinux_workstation::aur { 'xss-lock':
+     ensure => present,
+  }
 }

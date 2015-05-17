@@ -6,8 +6,7 @@
 #   - Install google-chrome
 #
 class archlinux_workstation::userapps::googlechrome {
-
-  package {'chromium':
-    ensure  => present,
+  archlinux_workstation::aur { 'google-chrome':
+    ensure => present,
   }
 }

@@ -22,7 +22,11 @@ class archlinux_workstation::i3 (
   package {'feh':
     ensure => present,
   }
-
+  
+  archlinux_workstation::aur { 'rofi':
+    ensure => present,
+  }
+  
   file {"${userhome}/.xinitrc":
     ensure => present,
     owner  => "${username}", 
