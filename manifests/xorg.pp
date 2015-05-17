@@ -25,7 +25,7 @@ class archlinux_workstation::xorg {
                     'xautolock',
                     'xbindkeys',
                     'terminator',
-                    'slock']
+                    ]
 
   package {$xorg_packages:
     ensure => present,

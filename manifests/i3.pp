@@ -27,12 +27,10 @@ class archlinux_workstation::i3 (
     ensure => present,
   }
   
-  file {"${userhome}/.xinitrc":
+  file {'/usr/local/bin/i3exit':
     ensure => present,
-    owner  => "${username}", 
-    group  => "${username}",
     mode   => '0755',
-    source => 'puppet:///modules/archlinux_workstation/xinitrc',
+    source => 'puppet:///modules/archlinux_workstation/i3exit',
   } 
   
   
