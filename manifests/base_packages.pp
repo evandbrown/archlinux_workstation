@@ -22,6 +22,7 @@ class archlinux_workstation::base_packages {
   package {'tmux': ensure => present, }
   package {'git': ensure => present, }
   package {'ntp': ensure => present, }
+  package {'htop': ensure => present, }
 
   archlinux_workstation::aur { 'powerline-fonts':
     ensure => present,
