@@ -22,8 +22,16 @@ class archlinux_workstation::i3 (
   package {'feh':
     ensure => present,
   }
+ 
+  package {'nautilus':
+    ensure => present,
+  }
   
   archlinux_workstation::aur { 'rofi':
+    ensure => present,
+  }
+ 
+  archlinux_workstation::aur { 'powerline-fonts-git':
     ensure => present,
   }
   
