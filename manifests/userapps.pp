@@ -25,6 +25,7 @@ class archlinux_workstation::userapps (
   }
 
   class {'archlinux_workstation::userapps::googlechrome': }
+  class {'archlinux_workstation::userapps::dropbox': }
   class {'archlinux_workstation::userapps::virtualbox': }
   class {'archlinux_workstation::userapps::irssi': }
   class {'archlinux_workstation::userapps::clementine': }
