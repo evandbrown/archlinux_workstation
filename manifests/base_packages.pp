@@ -24,8 +24,4 @@ class archlinux_workstation::base_packages {
   package {'ntp': ensure => present, }
   package {'htop': ensure => present, }
   package {'unzip': ensure => present, }
-
-  archlinux_workstation::aur { 'powerline-fonts':
-    ensure => present,
-  }
 }
