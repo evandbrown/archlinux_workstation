@@ -62,18 +62,6 @@ class archlinux_workstation (
   }
   validate_bool($userapps)
 
-  # internal $userhome is undef if $username is undef
-  if ! $username {
-    $userhome = undef
-  } else {
-    archlinux_workstation::user { $username:
-      username => $username,
-      homedir  => $userhome,
-      groups   => $groups,
-      dotfiles => $dotfiles,
-    }
-  }
-
   # saz/sudo; this purges the current config
   class {'sudo': }
 
@@ -90,9 +78,22 @@ class archlinux_workstation (
   class {'archlinux_workstation::base_packages': }
   class {'archlinux_workstation::dkms': }
   class {'archlinux_workstation::aura': }
+  class {'archlinux_workstation::dev': }
 
   # This should be teased out into a hardware-specific module
   class {'archlinux_workstation::lenovox1gen3': }
+
+  # internal $userhome is undef if $username is undef
+  if ! $username {
+    $userhome = undef
+  } else {
+    archlinux_workstation::user { $username:
+      username => $username,
+      homedir  => $userhome,
+      groups   => $groups,
+      dotfiles => $dotfiles,
+    }
+  }
 
   if $gui == 'kde' {
     class {'archlinux_workstation::kde': }
