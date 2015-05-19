@@ -25,6 +25,7 @@ class archlinux_workstation::xorg {
                     'xautolock',
                     'xbindkeys',
                     'terminator',
+                    'xorg-xcalc'
                     ]
 
   package {$xorg_packages:
