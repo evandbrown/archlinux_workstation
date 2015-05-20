@@ -11,7 +11,14 @@ class archlinux_workstation::lenovox1gen3 {
   package {'tlp': ensure => present, }
   package {'network-manager-applet': ensure => present, }
 
-archlinux_workstation::aur { 'asoundconf':
+  # Sound tool
+  archlinux_workstation::aur { 'asoundconf':
     ensure => present,
+  }
+
+  file {'/etc/X11/xorg.conf.d/50-synaptics.conf':
+    ensure => present,
+    mode   => '0755',
+    source => 'puppet:///modules/archlinux_workstation/50-synaptics.conf',
   }
 }

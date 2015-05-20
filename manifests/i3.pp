@@ -41,6 +41,11 @@ class archlinux_workstation::i3 (
     source => 'puppet:///modules/archlinux_workstation/i3exit',
   } 
   
+  file {"${userhome}/.xinitrc":
+    ensure => present,
+    mode   => '0755',
+    source => 'puppet:///modules/archlinux_workstation/xinitrc',
+  } 
   
   if $::virtual == 'virtualbox' {
     exec {'exec-vbox-additions':
