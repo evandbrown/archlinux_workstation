@@ -43,7 +43,9 @@ class archlinux_workstation::i3 (
   
   file {"${userhome}/.xinitrc":
     ensure => present,
-    mode   => '0755',
+    replace => false,
+    owner => "${username}",
+    group => "${username}",
     source => 'puppet:///modules/archlinux_workstation/xinitrc',
   } 
   
