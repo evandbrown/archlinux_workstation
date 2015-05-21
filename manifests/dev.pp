@@ -13,4 +13,5 @@ class archlinux_workstation::dev {
 
   # pip, virtualenv, and virtualenv wrapper
   package {['python-pip', 'python-virtualenv', 'python-virtualenvwrapper']: ensure => present, }
+
 }

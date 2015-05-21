@@ -11,7 +11,7 @@ class archlinux_workstation::i3 (
 )
 {
 
-  package {'i3':
+  package {['i3', 'i3lock']:
     ensure => present,
   }
 
