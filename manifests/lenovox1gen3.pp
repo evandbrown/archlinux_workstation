@@ -7,7 +7,6 @@
 class archlinux_workstation::lenovox1gen3 {
   package {'xf86-video-intel': ensure => present, }
   package {'xf86-input-synaptics': ensure => present, }
-  package {'gpointing-device-settings': ensure => present,}
   package {'tlp': ensure => present, }
   package {'network-manager-applet': ensure => present, }
 
@@ -16,9 +15,9 @@ class archlinux_workstation::lenovox1gen3 {
     ensure => present,
   }
 
-  file {'/etc/X11/xorg.conf.d/50-synaptics.conf':
+  file {'/etc/X11/xorg.conf.d/10-synaptics.conf':
     ensure => present,
     mode   => '0755',
-    source => 'puppet:///modules/archlinux_workstation/50-synaptics.conf',
+    source => 'puppet:///modules/archlinux_workstation/10-synaptics.conf',
   }
 }
