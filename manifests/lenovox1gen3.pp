@@ -7,6 +7,7 @@
 class archlinux_workstation::lenovox1gen3 {
   package {'xf86-video-intel': ensure => present, }
   package {'xf86-input-synaptics': ensure => present, }
+  package {'xorg-xinput': ensure => present, }
   package {'tlp': ensure => present, }
   package {'network-manager-applet': ensure => present, }
 
@@ -19,5 +20,11 @@ class archlinux_workstation::lenovox1gen3 {
     ensure => present,
     mode   => '0755',
     source => 'puppet:///modules/archlinux_workstation/10-synaptics.conf',
+  }
+  
+  file {'/etc/X11/xorg.conf.d/20-thinkpad.conf':
+    ensure => present,
+    mode   => '0755',
+    source => 'puppet:///modules/archlinux_workstation/20-thinkpad.conf',
   }
 }
